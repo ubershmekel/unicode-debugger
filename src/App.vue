@@ -1,12 +1,24 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import InputOutput from "./components/InputOutput.vue";
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <header>
+    <img alt="Unicode" src="./assets/Unicode_sample.png" />
+    <img alt="Unicode" src="./assets/New_Unicode_logo.svg" />
+  </header>
+  <InputOutput />
+  <footer>
+    <ul>
+      <li>
+        Learn more about Unicode at a
+        <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>
+      </li>
+      <li>Created by <a href="https://twitter.com/ubershmekel">ubershmekel</a></li>
+    </ul>
+  </footer>
 </template>
 
 <style>
@@ -17,5 +29,9 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+img {
+  height: 30px;
 }
 </style>
