@@ -34,4 +34,8 @@ import InputOutput from "./components/InputOutput.vue";
 img {
   height: 30px;
 }
+
+footer li {
+  list-style-type: none;
+}
 </style>
