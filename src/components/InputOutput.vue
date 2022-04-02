@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { ref, watch } from "vue";
 
 // defineProps<{ msg: string }>();
@@ -6,26 +7,31 @@ const url = new URL(window.location.href);
 const firstPageLoadQ = url.searchParams.get("q") || "";
 const message = ref(firstPageLoadQ);
 
-watch(() => {
-  console.log(message.value);
-  const url = new URL(window.location.href);
-  url.searchParams.set("q", message.value);
-  // window.location.search = url.searchParams;
-  // const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
-  const newUrl = url.toString();
-  window.history.pushState({ path: newUrl }, "", newUrl);
-});
-
-function cp(char) {
-  if (codePoint < 0x10000) {
-    s = String.fromCharCode(codePoint);
-  } else {
-    var offset = codePoint - 0x10000;
-    s = String.fromCharCode(0xd800 + (offset >> 10), 0xdc00 + (offset & 0x3ff));
+watch(
+  () => {
+    console.log(message.value);
+    const url = new URL(window.location.href);
+    url.searchParams.set("q", message.value);
+    // window.location.search = url.searchParams;
+    // const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
+    const newUrl = url.toString();
+    window.history.pushState({ path: newUrl }, "", newUrl);
+  },
+  (newValue, oldValue) => {
+    console.log("watch api", newValue, oldValue);//, message.value);
   }
-}
+);
 
-function codePoints(text) {
+// function cp(char) {
+//   if (codePoint < 0x10000) {
+//     s = String.fromCharCode(codePoint);
+//   } else {
+//     var offset = codePoint - 0x10000;
+//     s = String.fromCharCode(0xd800 + (offset >> 10), 0xdc00 + (offset & 0x3ff));
+//   }
+// }
+
+function codePoints(text: string) {
   const points = [];
   // `for .. of` is needed because JS strings are utf-16.
   // Other iteration methods like for(i;;) will iterate over bytes
@@ -36,21 +42,25 @@ function codePoints(text) {
   return points;
 }
 
-function charToHex(char) {
-  return padToFour(char.codePointAt(0).toString(16).toUpperCase());
+function charToHex(char: string) {
+  const cp = char.codePointAt(0);
+  if (cp === undefined) {
+    throw Error("Invalid string for char to hex");
+  }
+  return padToFour(cp.toString(16).toUpperCase());
   // const hex = "▄".codePointAt(0).toString(16);
   // const result = "\\u" + "0000".substring(0, 4 - hex.length) + hex;
   // return result;
 }
 
-function padToFour(textNumber) {
+function padToFour(textNumber: string) {
   if (textNumber.length <= 3) {
     textNumber = ("000" + textNumber).slice(-4);
   }
   return textNumber;
 }
 
-function copyTextToClipboard(text) {
+function copyTextToClipboard(text: string) {
   // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
   var textArea = document.createElement("textarea");
   //
@@ -71,8 +81,8 @@ function copyTextToClipboard(text) {
 
   // Place in the top-left corner of screen regardless of scroll position.
   textArea.style.position = "fixed";
-  textArea.style.top = 0;
-  textArea.style.left = 0;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
 
   // Ensure it has a small width and height. Setting to 1px / 1em
   // doesn't work as this gives a negative w/h on some browsers.
@@ -80,7 +90,7 @@ function copyTextToClipboard(text) {
   textArea.style.height = "2em";
 
   // We don't need padding, reducing the size if it does flash render.
-  textArea.style.padding = 0;
+  textArea.style.padding = "0";
 
   // Clean up any borders.
   textArea.style.border = "none";
@@ -125,18 +135,22 @@ function copyTextToClipboard(text) {
       <th>Copy</th>
     </tr>
     <tr class="char" v-for="char in codePoints(message)">
-      <td>{{ char }}</td>
-      <td>{{ charToHex(char) }}</td>
+      <td>{{ char; }}</td>
+      <td>{{ charToHex(char); }}</td>
       <!-- {{ char.codePointAt(0).toString(16) }} <br /> -->
       <!-- charCodeAt: -->
       <!-- {{ char.charCodeAt(0).toString(16) }} <br /> -->
-      <td><a :href="'https://unicodeplus.com/U+' + charToHex(char)">info</a></td>
-      <td><button @click="copyTextToClipboard(char)">Copy</button></td>
+      <td>
+        <a :href="'https://unicodeplus.com/U+' + charToHex(char)">info</a>
+      </td>
+      <td>
+        <button @click="copyTextToClipboard(char)">Copy</button>
+      </td>
     </tr>
   </table>
 
   <pre>
-    {{ message }}
+    {{ message; }}
   </pre>
 </template>
 

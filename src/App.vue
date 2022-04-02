@@ -16,7 +16,10 @@ import InputOutput from "./components/InputOutput.vue";
         Learn more about Unicode at a
         <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>
       </li>
-      <li>Created by <a href="https://twitter.com/ubershmekel">ubershmekel</a></li>
+      <li>
+        Created by
+        <a href="https://twitter.com/ubershmekel">ubershmekel</a>
+      </li>
     </ul>
   </footer>
 </template>
