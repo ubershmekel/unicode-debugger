@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import { ref, watch } from "vue";
 
 // defineProps<{ msg: string }>();
@@ -18,7 +17,7 @@ watch(
     window.history.pushState({ path: newUrl }, "", newUrl);
   },
   (newValue, oldValue) => {
-    console.log("watch api", newValue, oldValue);//, message.value);
+    console.log("watch api", newValue, oldValue); //, message.value);
   }
 );
 
@@ -135,8 +134,8 @@ function copyTextToClipboard(text: string) {
       <th>Copy</th>
     </tr>
     <tr class="char" v-for="char in codePoints(message)">
-      <td>{{ char; }}</td>
-      <td>{{ charToHex(char); }}</td>
+      <td>{{ char }}</td>
+      <td>{{ charToHex(char) }}</td>
       <!-- {{ char.codePointAt(0).toString(16) }} <br /> -->
       <!-- charCodeAt: -->
       <!-- {{ char.charCodeAt(0).toString(16) }} <br /> -->
@@ -150,8 +149,9 @@ function copyTextToClipboard(text: string) {
   </table>
 
   <pre>
-    {{ message; }}
-  </pre>
+  {{ message }}
+</pre
+  >
 </template>
 
 <style scoped>
