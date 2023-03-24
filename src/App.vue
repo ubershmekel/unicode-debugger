@@ -6,12 +6,19 @@ import InputOutput from "./components/InputOutput.vue";
 
 <template>
   <header>
-    <img alt="Unicode" src="./assets/Unicode_sample.png" />
-    <img alt="Unicode" src="./assets/New_Unicode_logo.svg" />
+    <h1>JS Unicode Debugger</h1>
+    <p>
+      Paste or type your text into this box then inspect the unicode information
+      of each character below. You can share the URL with the debug information.
+    </p>
   </header>
   <InputOutput />
   <footer>
     <ul>
+      <li>
+        <img alt="Unicode" src="./assets/Unicode_sample.png" />
+        <img alt="Unicode" src="./assets/New_Unicode_logo.svg" />
+      </li>
       <li>
         Learn more about Unicode at a
         <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>

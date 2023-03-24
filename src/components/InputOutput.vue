@@ -126,7 +126,7 @@ function copyTextToClipboard(text: string) {
     cols="50"
   ></textarea>
 
-  <table>
+  <table v-if="message">
     <tr>
       <th>Text</th>
       <th>Codepoint</th>
