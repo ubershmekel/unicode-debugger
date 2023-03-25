@@ -24,7 +24,7 @@ import InputOutput from "./components/InputOutput.vue";
         <img alt="Unicode" src="./assets/New_Unicode_logo.svg" />
       </li>
       <li>
-        Learn more about Unicode at a
+        Learn more about Unicode at
         <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>
       </li>
       <li>
