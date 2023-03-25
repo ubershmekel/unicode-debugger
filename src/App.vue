@@ -9,7 +9,11 @@ import InputOutput from "./components/InputOutput.vue";
     <h1>JS Unicode Debugger</h1>
     <p>
       Paste or type your text into this box then inspect the unicode information
-      of each character below. You can share the URL with the debug information.
+      of each character below. You can share the URL with the debug information
+      like these examples:
+      <a href="?q=🤷¯\_(ツ)_/¯emoji">(1)</a>
+      <a href="?q=monospace?𝚖𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎!">(2)</a>
+      <a href="?q=ൠ❽ᴥ∰⁂᧻◉✪❤෴">(3)</a>
     </p>
   </header>
   <InputOutput />
@@ -26,6 +30,12 @@ import InputOutput from "./components/InputOutput.vue";
       <li>
         Created by
         <a href="https://twitter.com/ubershmekel">ubershmekel</a>
+      </li>
+      <li>
+        See
+        <a href="https://github.com/ubershmekel/unicode-debugger"
+          >source on github</a
+        >
       </li>
     </ul>
   </footer>
